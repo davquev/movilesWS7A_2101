@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Ejm01</string>
+    <string name="email">Introduzca email</string>
+    <string name="nombre">Introduzca nombre</string>
+    <string name="enviar">enviar</string>
+</resources>
