@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AppContactos</string>
+    <string name="nombre">Ingrese nombre</string>
+    <string name="telf">Ingrese Telf.</string>
 </resources>
