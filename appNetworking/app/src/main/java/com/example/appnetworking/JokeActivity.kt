@@ -39,7 +39,6 @@ class JokeActivity : AppCompatActivity() {
             override fun onFailure(call: Call<Joke>, t: Throwable) {
                 Log.d("jokeActivity", t.toString())
             }
-
         })
     }
 }
