@@ -29,8 +29,7 @@ class ContactProtype(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val tvTelephone = itemView.tvTelephone
     val cvContact = itemView.cvContact
 
-    fun bind(contact: Contact, itemClickListener: OnItemClickListener)
-    {
+    fun bind(contact: Contact, itemClickListener: OnItemClickListener){
         tvName.text = contact.name
         tvTelephone.text = contact.telephone
 

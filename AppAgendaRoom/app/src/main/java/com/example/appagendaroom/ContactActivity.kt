@@ -38,20 +38,12 @@ class ContactActivity : AppCompatActivity() {
         contact.name = etName.text.toString()
         contact.telephone = etTelephone.text.toString()
 
-        if (contact.id == null)
-        {
+        if (contact.id == null){
             AppDatabase.getInstance(this).getDao().insertContact(contact)
-        }
-        else
-        {
+        } else {
             AppDatabase.getInstance(this).getDao().updateContact(contact)
         }
         finish()
-
-        //val name = etName.text.toString()
-        //val telephone = etTelephone.text.toString()
-
-        //contact = Contact(null, name, telephone)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -63,7 +55,7 @@ class ContactActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
-            R.id.itemAdd ->{
+            R.id.itemSave ->{
                 saveContact()
                 true
             }
