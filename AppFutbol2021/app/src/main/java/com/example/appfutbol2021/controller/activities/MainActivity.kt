@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
         val teamService: TeamService
         teamService = retrofit.create(TeamService::class.java)
         val request = teamService.getTeams(
-            "api-football-v1.p.rapidapi.com",
             "d229813befmsh4c1646ad132a0b5p1313fcjsn9afecaefc97e"
         )
 
