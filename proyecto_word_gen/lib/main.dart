@@ -22,8 +22,8 @@ class RandomWord extends StatefulWidget {
 }
 
 class RandomWordState extends State<RandomWord> {
-  //final List<WordPair> suggestions = <WordPair>[];
-  final suggestions = <WordPair>[];
+  final List<WordPair> suggestions = <WordPair>[];
+  //final suggestions = <WordPair>[];
   final TextStyle biggerFont = TextStyle(fontSize: 18);
   final Set<WordPair> saved = Set<WordPair>();
 
