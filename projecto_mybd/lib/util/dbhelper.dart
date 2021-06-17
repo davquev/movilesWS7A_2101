@@ -7,10 +7,17 @@ class DbHelper {
   final int version = 1;
   Database db;
 
+  //codigo q controla q solo se abra 1 instancia de la BD
+  static final DbHelper dbHelper = DbHelper._internal();
+  DbHelper._internal();
+  factory DbHelper(){
+    return dbHelper;
+  }
+
   Future<Database> openDb() async {
     if (db == null) {
       //la bd no esta creada --> la creo
-      db = await openDatabase(join(await getDatabasesPath(), 'shopping.db'),
+      db = await openDatabase(join(await getDatabasesPath(), 'hopping.db'),
           onCreate: (database, version) {
         database.execute('CREATE TABLE lists('
             'id INTEGER PRIMARY KEY,'
@@ -31,8 +38,8 @@ class DbHelper {
   Future testDB() async {
     db = await openDb();
 
-    await db.execute('INSERT INTO lists VALUES (2, "Medicinas", 3)');
-    //await db.execute('INSERT INTO items VALUES (0, 0, "Manzanas", "2 kgs", "Manzanas rojas")');
+    await db.execute('INSERT INTO lists VALUES (0, "Medicinas", 1)');
+    await db.execute('INSERT INTO items VALUES (0, 0, "Vick", "2 frascos", "de 200 Gr")');
 
     List lists = await db.rawQuery('SELECT * FROM lists');
     List items = await db.rawQuery('SELECT * FROM items');
