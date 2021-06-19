@@ -14,6 +14,10 @@ class ShoppingListDialog{
       txtName.text = list.name;
       txtPriority.text = list.priority.toString();
     }
+    else{
+      txtName.text = "";
+      txtPriority.text = "";
+    }
 
     return AlertDialog(
       title: Text((isNew)? 'New shopping list' : 'Edit shopping list'),

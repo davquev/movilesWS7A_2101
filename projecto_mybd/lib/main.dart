@@ -52,27 +52,40 @@ class _ShowListState extends State<ShowList> {
       body: ListView.builder(
           itemCount: (shoppingList != null)? shoppingList.length : 0,
           itemBuilder: (BuildContext context, int index){
-            return ListTile(
-              title: Text(shoppingList[index].name),
-              leading: CircleAvatar(
-                child: Text(shoppingList[index].priority.toString()),
-              ),
-              onTap: (){
-                Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) =>
-                    ItemsScreen(shoppingList[index])
-                ),
-              );
+            return Dismissible(
+              key: Key(shoppingList[index].name),
+              onDismissed: (direction){
+                String srtName = shoppingList[index].name;
+                helper.deleteList(shoppingList[index]); //elimino de BD
+                setState(() {
+                  shoppingList.removeAt(index); //elimino de la vista
+                });
+                Scaffold
+                .of(context)
+                .showSnackBar(SnackBar(content: Text("$srtName eliminado...")));
               },
-              trailing: IconButton(
-                icon:  Icon(Icons.edit),
-                onPressed: (){
-                  showDialog(
-                      context: context,
-                  builder: (BuildContext context) =>
-                  dialog.buildDialog(context, shoppingList[index], false));
+              child: ListTile(
+                title: Text(shoppingList[index].name),
+                leading: CircleAvatar(
+                  child: Text(shoppingList[index].priority.toString()),
+                ),
+                onTap: (){
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>
+                      ItemsScreen(shoppingList[index])
+                  ),
+                );
                 },
+                trailing: IconButton(
+                  icon:  Icon(Icons.edit),
+                  onPressed: (){
+                    showDialog(
+                        context: context,
+                    builder: (BuildContext context) =>
+                    dialog.buildDialog(context, shoppingList[index], false));
+                  },
+                ),
               ),
             );
           }),
